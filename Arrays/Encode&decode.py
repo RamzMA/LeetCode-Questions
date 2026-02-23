@@ -18,11 +18,14 @@ class Solution:
 
         while i < len(s):
             j = i
-            while s[j] != '#':
+            while j < len(s) and s[j] != '#':
                 j += 1
+            if j == len(s):
+                # '#' not found
+                break
             length = int(s[i:j])
-            words.append(s[i + 1: j + 1 + length])
-            i = j+1+length
+            words.append(s[j + 1: j + 1 + length])
+            i = j + 1 + length
         return words
             
 
@@ -33,5 +36,6 @@ class Solution:
 
 #test cases
 solution = Solution()
-print(solution.encode(["Hello", "world"]))
-print(solution.decode("5#Hello5"))
+encoded = solution.encode(["Hello", "world"])
+print(encoded)
+print(solution.decode(encoded))
