@@ -13,20 +13,20 @@ class Solution(object):
         Space complexity: O(1)
         """
 
-        hs = {}
+        currentNumber = nums[0]
+        currentCount = 1
 
-        for num in nums:
-            hs[num] = hs.get(num, 0) + 1
+        for i in range(1, len(nums)):
+            if nums[i] == currentNumber:
+                currentCount += 1
+            else:
+                currentCount -= 1
 
-        current = 0
-        majority = 0
+            if currentCount == 0:
+                currentCount = 1
+                currentNumber = nums[i]
 
-        for key, value in hs.items():
-            if value > current:
-                current = value
-                majority = key
-
-        return majority
+        return currentNumber
 
 
 # test cases
