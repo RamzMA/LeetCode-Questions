@@ -1,10 +1,9 @@
 class Solution(object):
     def isPalindrome(self, s):
-        
-        
-        cleaned = ''.join(c.lower() for c in s if c.isalpha()) 
 
-        left,right = 0, len(cleaned) - 1
+        cleaned = "".join(c.lower() for c in s if c.isalnum())
+
+        left, right = 0, len(cleaned) - 1
 
         while left != right:
             if cleaned[left] != cleaned[right]:
@@ -15,10 +14,14 @@ class Solution(object):
 
         return True
 
-#Test Cases
-solution = Solution()
-print(solution.isPalindrome("car")) # returns false as car is not a palindrome
-print(solution.isPalindrome("wow")) # returns true as wow is a palindrome
-print(solution.isPalindrome("A man, a plan, a canal: Panama")) # returns true as it is a palindrome
-print(solution.isPalindrome("race a car")) # returns false as race a car is not a palindrome
 
+# Test Cases
+solution = Solution()
+print(solution.isPalindrome("car"))  # returns false as car is not a palindrome
+print(solution.isPalindrome("wow"))  # returns true as wow is a palindrome
+print(
+    solution.isPalindrome("A man, a plan, a canal: Panama")
+)  # returns true as it is a palindrome
+print(
+    solution.isPalindrome("race a car")
+)  # returns false as race a car is not a palindrome
