@@ -5,7 +5,7 @@ class Solution(object):
 
         left, right = 0, len(cleaned) - 1
 
-        while left != right:
+        while left < right:
             if cleaned[left] != cleaned[right]:
                 return False
 
