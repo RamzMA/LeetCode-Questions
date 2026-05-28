@@ -41,6 +41,4 @@ class Solution:
 solution = Solution()
 print(solution.dietPlanPerformance([1, 2, 3, 4, 5], 1, 3, 3))  # 0
 print(solution.dietPlanPerformance([3, 2], 2, 0, 1))  # 1
-print(
-    solution.dietPlanPerformance([6, 5, 0, 4, 2, 6, 1, 6], 4, 5, 6)
-)  # 0 — check manually
+print(solution.dietPlanPerformance([6, 5, 0, 4, 2, 6, 1, 6], 4, 5, 6))  # 5
