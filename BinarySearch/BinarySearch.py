@@ -1,32 +1,38 @@
-"""
-My apprach would be to use binary seach in order to check the middle value, if the middle value is over the target number then I would check numbers before the middle.
-Otherwise if the middle number is less than the target check for numbers after middle numbers in the list. Each time repeating the binary search until a target is found, or thereappears to be no target found where I would return -1.
-
-The brute force approach would be to set a for loop in order to check each number in the list, however that would be o(n) and we are looking for o(logn) which binary searching  can provide
-"""
-
 from typing import List
 
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        if not nums:
-            return -1
+        """
+        Binary Search - #704
 
-        left = 0
-        right = len(nums) - 1
+        Calculate the midpoint each iteration.
+        If the midpoint value matches return it.
+        If target is greater move left pointer past mid, if smaller move right pointer before mid.
+        Return -1 if not found.
 
-        while left <= right:
-            middle = (right + left) // 2
+        Time complexity: O(log n)
+        Space complexity: O(1)
+        """
+        l = 0
+        r = len(nums) - 1
+
+        while l <= r:
+            middle = (l + r) // 2
+
             if nums[middle] == target:
                 return middle
             elif nums[middle] < target:
-                left = middle + 1
+                l = middle + 1
             else:
-                right = middle - 1
+                r = middle - 1
         return -1
 
 
+# test cases
 solution = Solution()
-
-print(solution.search([-1, 0, 2, 4, 6, 8], 4))
+print(solution.search([-1, 0, 3, 5, 9, 12], 9))  # 4
+print(solution.search([-1, 0, 3, 5, 9, 12], 2))  # -1
+print(solution.search([5], 5))  # 0
+print(solution.search([1, 3, 5, 7, 9], 7))  # 3
+print(solution.search([1, 3, 5, 7, 9], 6))  # -1
